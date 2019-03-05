@@ -32,18 +32,20 @@ def move(my_history, their_history, my_score, their_score):
     # Decide whether to return 'c' or 'b'.
 
 
+'''
 def strategy1(my_history, their_history, my_score, their_score):
    if (len(my_history) % 9 == 0):
        return 'c'
    else:
         return 'b'
-   
-''' if (len(my_history) == 0):
+        
+def strategyOther():   
+    if (len(my_history) == 0):
         return 'c'
-    elif (their_history[-1] == 'b' or their_history[-2] == 'b'):
+    elif (their_history[-1] == 'b'):
         return 'b'
     else:
-        return 'c' '''
+        return 'c'
         
 def strategy2(my_history, their_history, my_score, their_score):
     if (my_score <= 0):
@@ -65,6 +67,7 @@ def strategy3(my_history, their_history, my_score, their_score):
             return 'b'
         else:
             return 'c'
+'''
     
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
