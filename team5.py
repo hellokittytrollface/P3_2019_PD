@@ -19,18 +19,19 @@ def move(my_history, their_history, my_score, their_score):
     '''
     
     # If they are alternate between betray and collude
-    if len(their_history)>2 and their_history[-1]=='b' and their_history[-2]=='c':
-        return 'c'
-    elif len(their_history)>2 and their_history[-1]=='c' and their_history[-2] == 'b':
-        return 'b'
+    if len(their_history)>=2:
+        if their_history[-1]=='b' and their_history[-2]=='c':
+            return 'c'
+        elif their_history[-1]=='c' and their_history[-2] == 'b': 
+            return 'b'
         
     # If they betray 2 times in a row
-    elif len(their_history)>2 and their_history[-1]=='b' and their_history[-2]=='b':
-        return 'b'
+        elif their_history[-1]=='b' and their_history[-2]=='b':
+            return 'b'
     
     # If they collude 2 times in a row
-    elif len(their_history)>2 and their_history[-1]=='c' and their_history[-2]=='c':
-        return 'c'
+        elif their_history[-1]=='c' and their_history[-2]=='c':
+            return 'c'
         
     # Betray first 2 moves to be safe
     else:
