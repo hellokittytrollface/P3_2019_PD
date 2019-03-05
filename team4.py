@@ -6,10 +6,51 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+team_name = 'ALT' # Only 10 chars displayed.
+strategy_name = 'always collude'
+strategy_description = 'The user always chooses collude, never chooses betray'
+
+def strategyone(my_history, their_history, my_score, their_score):
+    return 'c'
+ 
+team_name = 'ALT' # Only 10 chars displayed.
+strategy_name = 'always betray'
+strategy_description = 'The user always chooses betray, never chooses collude'
+   
+def strategytwo(my_history, their_history, my_score, their_score):
+    return 'b'
     
+team_name = 'ALT' # Only 10 chars displayed.
+strategy_name = 'divisible by three'
+strategy_description = 'first collude, then collude again, then betray and repeat that pattern the whole time'
+
+def strategythree(my_history, their_history, my_score, their_score):
+    if len(my_history)%3 == 0:
+        return 'b'
+    else:
+        return 'c'
+ 
+team_name = 'ALT' # Only 10 chars displayed.
+strategy_name = 'last move'
+strategy_description = 'if the length of the users hisory is divisible by two then you would collude, but if the last move of both you and your opponent is collude then you would betray, otherwise you collude'
+   
+def strategyfour(my_history, their_history, my_score, their_score):
+    if len(my_history)%2 == 0:
+        return 'c'
+    elif (my_history[-1]=='c') and (their_history[-1]=='c'):
+        return 'b' 
+    else:
+        return 'c'
+    
+    
+    
+    
+    
+    
+  
+    
+
+
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
@@ -65,4 +106,12 @@ if __name__ == '__main__':
               # move('bbb', 'ccc', 0, 0) returns 'b'.
               my_score=0, 
               their_score=0,
-              result='b')             
+              result='b')  
+ 
+def test_move():
+     if test_move(my_history='',
+                 their_history='',
+                 my_score=0,
+                 their_score=0,
+                 result='b'):
+         print 'Test passed'           
