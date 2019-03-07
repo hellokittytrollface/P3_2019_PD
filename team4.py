@@ -1,4 +1,4 @@
-####
+'''####
 # Each team's file must define four tokens:
 #     team_name: a string
 #     strategy_name: a string
@@ -32,9 +32,9 @@ def strategythree(my_history, their_history, my_score, their_score):
  
 team_name = 'ALT' # Only 10 chars displayed.
 strategy_name = 'last move'
-strategy_description = 'if the length of the users hisory is divisible by two then you would collude, but if the last move of both you and your opponent is collude then you would betray, otherwise you collude'
+strategy_description = 'if the length of the users hisory is divisible by two then you would collude, but if the last move of both you and your opponent is collude then you would betray, otherwise you collude' '''
    
-def strategyfour(my_history, their_history, my_score, their_score):
+def move(my_history, their_history, my_score, their_score):
     if len(my_history)%2 == 0:
         return 'c'
     elif (my_history[-1]=='c') and (their_history[-1]=='c'):
