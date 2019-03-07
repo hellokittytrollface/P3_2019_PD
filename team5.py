@@ -6,9 +6,9 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+team_name = 'Team Matt' # Only 10 chars displayed.
+strategy_name = 'Make move based on opponents previous 2 choices'
+strategy_description = 'Betray first 2 rounds.  Betray if opponent has betrayed twice in a row, collude if opponent has colluded twice in a row.  Betray or collude if opponent is alternating moves.'
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -17,6 +17,28 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
+    
+    # If they are alternate between betray and collude
+    if len(their_history)>=2:
+        if their_history[-1]=='b' and their_history[-2]=='c':
+            return 'c'
+        elif their_history[-1]=='c' and their_history[-2] == 'b': 
+            return 'b'
+        
+    # If they betray 2 times in a row
+        elif their_history[-1]=='b' and their_history[-2]=='b':
+            return 'b'
+    
+    # If they collude 2 times in a row
+        elif their_history[-1]=='c' and their_history[-2]=='c':
+            return 'c'
+        
+    # Betray first 2 moves to be safe
+    else:
+        return 'b'
+        
+    
+    
 
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
@@ -26,7 +48,6 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    return 'c'
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
