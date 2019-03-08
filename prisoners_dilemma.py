@@ -161,9 +161,17 @@ def play_round(player1, player2, score1, score2, moves1, moves2):
         score1 += PUNISHMENT
         score2 += PUNISHMENT     
     else:
-        # Both players get the "error score" if someone's code returns an improper action.
-        score1 += ERROR
-        score2 += ERROR
+        # Check both player's actions and add error scores accordingly
+        if (not action1 in 'bc' and len(action1) != 1) and (not action2 in 'bc' and len(action2) != 1):
+            # Both players do not have a proper ouput
+            score1 += ERROR
+            score2 += ERROR
+        elif not action1 in 'bc' and len(action1) != 1:
+            # Player 1 returns wrong output
+            score1 += ERROR
+        elif not action2 in 'bc' and len(action2) != 1:
+            # Player 2 returns wrong output
+            score2 += ERROR
     
     # Append the actions to the previous histories.
     if action1 in 'bc':
